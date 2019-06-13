@@ -22,10 +22,10 @@ reduceStock = cart => {
           } else if (doc == null) {
             //if the item not exist in stock add new item
             console.log("item out of stock!");
-            return resolve();
+            return resolve(false);
           }
           console.log("stock updated!"); //if the item exist in cart update
-          return resolve();
+          return resolve(true);
         }
       );
     });

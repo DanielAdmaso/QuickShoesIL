@@ -26,8 +26,8 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.loginService.getUserDetails().subscribe(data => {
-      if (data.email) {
-        this.cartService.getCartByEmail(data.email).subscribe(data => {
+      if (data._id) {
+        this.cartService.getCartByEmail(data._id).subscribe(data => {
           if (data) {
             this.cart = data;
             this.subtotal();

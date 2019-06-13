@@ -33,12 +33,11 @@ export class SingleShoesComponent implements OnInit {
     return tempprice;
   }
 
-  addToCart(id, sizee, quantityy) {
+  addToCart(shoesId, size, quantity) {
     if (localStorage.getItem("token")) {
-      let email = "";
       this.loginService.getUserDetails().subscribe(data => {
         this.cartService
-          .addToCart(data.email, id, sizee, quantityy)
+          .addToCart(data._id, shoesId, size, quantity)
           .subscribe(data => {
             if (data) {
               this.router.navigate(["/cart"]);

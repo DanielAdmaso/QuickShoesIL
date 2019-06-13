@@ -11,13 +11,13 @@ export class CartService {
   url = "http://localhost:3000";
   constructor(private http: HttpClient, private shoesService: ShoesService) {}
 
-  getCartByEmail(email) {
-    return this.http.post<Cart[]>(`${this.url}/cart/getcart`, { email: email });
+  getCartByEmail(_id) {
+    return this.http.post<Cart[]>(`${this.url}/cart/getcart`, { _id: _id });
   }
 
-  addToCart(email, shoesid, size, quantity) {
+  addToCart(_id, shoesid, size, quantity) {
     let cart = {
-      email: email,
+      customerId: _id,
       shoes: this.shoesService.getSingleShoeById(shoesid),
       size: size,
       quantity: quantity

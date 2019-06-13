@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const cartSchema = mongoose.Schema({
-  email: { type: String, required: true },
+  customerId: { type: String, required: true },
   shoes: { type: Object, required: true },
   size: { type: Number, required: true },
   quantity: { type: Number, required: true }
@@ -11,7 +11,7 @@ Cart = mongoose.model("Cart", cartSchema);
 
 getCart = req => {
   return new Promise((resolve, reject) => {
-    Cart.find({ email: req.body.email }).then(cart => {
+    Cart.find({ customerId: req.body._id }).then(cart => {
       if (cart.length > 0) {
         return resolve(cart);
       }
@@ -24,7 +24,7 @@ addToCart = req => {
   return new Promise((resolve, reject) => {
     Cart.findOneAndUpdate(
       {
-        email: req.body.cart.email,
+        customerId: req.body.cart.customerId,
         shoes: req.body.cart.shoes,
         size: req.body.cart.size
       },
@@ -44,11 +44,14 @@ addToCart = req => {
   });
 };
 
-deleteCartByEmail = email => {
+deleteCartByCustomerId = customerId => {
   return new Promise((resolve, reject) => {
-    Cart.deleteMany({ email: email }).then(result => {
-      console.log("Cart deleted");
-      return resolve();
+    Cart.deleteMany({ customerId: customerId }).then(result => {
+      if (result) {
+        console.log("Cart deleted");
+        return resolve(true);
+      }
+      return resolve(false);
     });
   });
 };
@@ -56,5 +59,5 @@ deleteCartByEmail = email => {
 module.exports = {
   getCart: getCart,
   addToCart: addToCart,
-  deleteCartByEmail: deleteCartByEmail
+  deleteCartByCustomerId: deleteCartByCustomerId
 };

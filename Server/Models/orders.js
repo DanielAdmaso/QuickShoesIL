@@ -4,7 +4,6 @@ const StockModel = require("../Models/stock");
 const CartModel = require("../Models/cart");
 
 const ordersSchema = mongoose.Schema({
-  orderid: { type: Number, required: true, unique: true },
   customerEmail: { type: String, required: true },
   customerCity: { type: String, required: true },
   customerAddress: { type: String, required: true },
@@ -16,7 +15,7 @@ const ordersSchema = mongoose.Schema({
 Order = mongoose.model("Order", ordersSchema);
 
 const orderDetailsSchema = mongoose.Schema({
-  orderid: { type: Number, required: true },
+  orderid: { type: String, required: true },
   shoesid: { type: Number, required: true },
   shoesSize: { type: Number, required: true },
   unitPrice: { type: Number, required: true },
@@ -27,22 +26,31 @@ OrderDetails = mongoose.model("OrderDetails", orderDetailsSchema);
 
 buyNow = cart => {
   //get customer cart
-  let orderIdRandomNumber = Math.floor(Math.random() * (1000 - 1)) + 1;
-  let p = new Promise((resolve, reject) => {
-    createOrder(cart, orderIdRandomNumber);
-    creatOrderDetails(cart, orderIdRandomNumber);
-    StockModel.reduceStock(cart);
-    CartModel.deleteCartByEmail(cart[0].email);
-  }).then(result => {
-    return true;
+  return new Promise((resolve, reject) => {
+    createOrder(cart).then(orderId => {
+      if (orderId) {
+        creatOrderDetails(cart, orderId).then(orderDetailsCreated => {
+          if (orderDetailsCreated) {
+            StockModel.reduceStock(cart).then(stockUpdated => {
+              if (stockUpdated) {
+                CartModel.deleteCartByCustomerId(cart[0].customerId).then(
+                  cartDeleted => {
+                    return resolve(cartDeleted);
+                  }
+                );
+              }
+            });
+          }
+        });
+      }
+    });
   });
 };
 
-createOrder = (cart, orderIdRandomNumber) => {
+createOrder = cart => {
   return new Promise((resolve, reject) => {
-    CustomerModel.findCustomerByEmail(cart[0].email).then(customer => {
+    CustomerModel.findCustomerById(cart[0].customerId).then(customer => {
       const order = new Order({
-        orderid: orderIdRandomNumber,
         customerEmail: customer[0].email,
         customerCity: customer[0].city,
         customerAddress: customer[0].address,
@@ -52,18 +60,18 @@ createOrder = (cart, orderIdRandomNumber) => {
       order.save().then(result => {
         if (result) {
           console.log("Order Created");
-          return resolve();
+          return resolve(order._id);
         }
       });
     });
   });
 };
 
-creatOrderDetails = (cart, orderIdRandomNumber) => {
+creatOrderDetails = (cart, orderId) => {
   return new Promise((resolve, reject) => {
     cart.forEach(item => {
       const orderDetails = new OrderDetails({
-        orderid: orderIdRandomNumber,
+        orderid: orderId,
         shoesid: item.shoes.shoesid,
         shoesSize: item.size,
         unitPrice: item.shoes.price,
@@ -72,7 +80,7 @@ creatOrderDetails = (cart, orderIdRandomNumber) => {
       orderDetails.save().then(result => {
         if (result) {
           console.log("OrderDetails Created");
-          return resolve();
+          return resolve(true);
         }
       });
     });

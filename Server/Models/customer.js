@@ -55,7 +55,7 @@ Login = req => {
       ) {
         if (response) {
           let token = jwt.sign(
-            { email: customer.email, firstname: customer.firstname },
+            { _id: customer._id, firstname: customer.firstname },
             "secret",
             {
               expiresIn: "48h"
@@ -69,9 +69,9 @@ Login = req => {
   });
 };
 
-findCustomerByEmail = email => {
+findCustomerById = _id => {
   return new Promise((resolve, reject) => {
-    Customer.find({ email: email }).then(customer => {
+    Customer.find({ _id: _id }).then(customer => {
       if (customer) {
         return resolve(customer);
       }
@@ -82,5 +82,5 @@ findCustomerByEmail = email => {
 module.exports = {
   Register: Register,
   Login: Login,
-  findCustomerByEmail: findCustomerByEmail
+  findCustomerById: findCustomerById
 };

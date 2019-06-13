@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ShoesService } from "src/app/services/shoes.service";
 import { Shoes } from "src/app/model/ShoesModel";
-import { Router, ActivatedRoute } from "@angular/router";
-import { CartService } from "src/app/services/cart.service";
+import { Router } from "@angular/router";
+
 import "bootstrap/dist/css/bootstrap.css";
 
 declare var jquery: any;
@@ -19,19 +19,15 @@ export class NikeComponent implements OnInit {
   allShoes: Shoes[];
   nikeShoes: Shoes[];
   ngOnInit() {
-    // if (localStorage.getItem("shoes")) {
-    //   if (!localStorage.getItem("nikeShoes")) {
-    //     this.getNikeShoes();
-    //   } else {
-    //     this.allShoes = JSON.parse(localStorage.getItem("nikeShoes"));
-    //   }
-    // } else {
-    this.shoesService.getAllShoes().subscribe(allShoes => {
-      localStorage.setItem("shoes", JSON.stringify(allShoes));
-      this.allShoes = allShoes;
-      this.getNikeShoes(allShoes);
-    });
-    // }
+    if (localStorage.getItem("shoes")) {
+      this.getNikeShoes(JSON.parse(localStorage.getItem("shoes")));
+    } else {
+      this.shoesService.getAllShoes().subscribe(allShoes => {
+        localStorage.setItem("shoes", JSON.stringify(allShoes));
+        this.allShoes = allShoes;
+        this.getNikeShoes(allShoes);
+      });
+    }
 
     $("#inpt_search").on("focus", function() {
       $(this)

@@ -29,8 +29,13 @@ router.post("/addtocart", (req, res) => {
 });
 
 router.post("/buyNow", (req, res) => {
-  OrderModel.buyNow(req.body.cart);
-  res.status(200).send(true);
+  OrderModel.buyNow(req.body.cart).then(result => {
+    if (result) {
+      res.status(200).send(result);
+    } else {
+      res.status(204).send(result);
+    }
+  });
 });
 
 module.exports = router;
