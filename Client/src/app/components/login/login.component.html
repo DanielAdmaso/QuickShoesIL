@@ -1,0 +1,321 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form">
+    <ul class="tab-group">
+      <li class="tab active"><a href="#signup">Sign Up</a></li>
+      <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="signup">
+        <h1>Sign Up for Free</h1>
+
+        <div class="top-row">
+          <div class="form-group">
+            <div class="field-wrap">
+              <input
+                type="text"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="First Name"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('firstName').errors &&
+                  (registerForm.get('firstName').touched ||
+                    registerForm.get('firstName').dirty)
+                "
+              >
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('firstName').errors.required"
+                >
+                  First Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="field-wrap">
+              <input
+                type="text"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="Last Name"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('lastName').errors &&
+                  (registerForm.get('lastName').touched ||
+                    registerForm.get('lastName').dirty)
+                "
+              >
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('lastName').errors.required"
+                >
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-row">
+          <div class="form-group">
+            <div class="field-wrap">
+              <input
+                type="text"
+                formControlName="city"
+                class="form-control"
+                placeholder="City"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('city').errors &&
+                  (registerForm.get('city').touched ||
+                    registerForm.get('city').dirty)
+                "
+              >
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('city').errors.required"
+                >
+                  City is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="field-wrap">
+              <input
+                type="text"
+                formControlName="postalcode"
+                class="form-control"
+                placeholder="PostalCode"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('postalcode').errors &&
+                  (registerForm.get('postalcode').touched ||
+                    registerForm.get('postalcode').dirty)
+                "
+              >
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('postalcode').errors.required"
+                >
+                  PostalCode is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field-wrap">
+            <input
+              type="text"
+              formControlName="address"
+              class="form-control"
+              placeholder="Address"
+            />
+            <div
+              *ngIf="
+                registerForm.get('address').errors &&
+                (registerForm.get('address').touched ||
+                  registerForm.get('address').dirty)
+              "
+            >
+              <div
+                class="validation-errors"
+                *ngIf="registerForm.get('address').errors.required"
+              >
+                Address is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field-wrap">
+            <input
+              type="text"
+              formControlName="phone"
+              class="form-control"
+              placeholder="Phone"
+            />
+            <div
+              *ngIf="
+                registerForm.get('phone').errors &&
+                (registerForm.get('phone').touched ||
+                  registerForm.get('phone').dirty)
+              "
+            >
+              <div
+                class="validation-errors"
+                *ngIf="registerForm.get('phone').errors.required"
+              >
+                Phone is required
+              </div>
+              <div
+                class="validation-errors"
+                *ngIf="
+                  registerForm.get('phone').errors.minlength ||
+                  registerForm.get('phone').errors.maxlength
+                "
+              >
+                Phone must be 10 digits
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="field-wrap">
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              placeholder="Email"
+            />
+            <div
+              *ngIf="
+                registerForm.get('email').errors &&
+                (registerForm.get('email').touched ||
+                  registerForm.get('email').dirty)
+              "
+            >
+              <div
+                class="validation-errors"
+                *ngIf="registerForm.get('email').errors.required"
+              >
+                Email is required
+              </div>
+              <div
+                class="validation-errors"
+                *ngIf="registerForm.get('email').errors.email"
+              >
+                Email must be a valid email address
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-row">
+          <div class="form-group">
+            <div class="field-wrap">
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('password').errors &&
+                  (registerForm.get('password').touched ||
+                    registerForm.get('password').dirty)
+                "
+              >
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('password').errors.required"
+                >
+                  Password is required
+                </div>
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('password').errors.minlength"
+                >
+                  Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="field-wrap">
+              <input
+                type="password"
+                formControlName="confirmpassword"
+                appConfirmEqualValidator="password"
+                class="form-control"
+                placeholder="Confirm Password"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('confirmpassword').errors &&
+                  (registerForm.get('confirmpassword').touched ||
+                    registerForm.get('confirmpassword').dirty)
+                "
+              >
+                <div
+                  class="validation-errors"
+                  *ngIf="registerForm.get('confirmpassword').errors.required"
+                >
+                  Password is required
+                </div>
+                <div
+                  class="validation-errors"
+                  *ngIf="
+                    registerForm.get('confirmpassword').errors.notEqual &&
+                    !registerForm.get('confirmpassword').errors.required
+                  "
+                >
+                  Password and ConfirmPassword does not match
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="validation-errors" *ngIf="ValidationFaild">
+          Please make sure all required fields are filled out correctly
+        </div>
+        <p class="validation-errors" *ngIf="emailAlreadyExist">
+          Email Already Exist
+        </p>
+
+        <div class="form-group">
+          <button type="submit" class="button button-block">Get Started</button>
+        </div>
+      </div>
+
+      <div id="login">
+        <h1>Welcome Back!</h1>
+        <div class="field-wrap">
+          <input
+            type="email"
+            #email
+            required
+            autocomplete="off"
+            placeholder="Email Address"
+          />
+        </div>
+
+        <div class="field-wrap">
+          <input
+            type="password"
+            #password
+            required
+            autocomplete="off"
+            placeholder="Password"
+          />
+        </div>
+
+        <p class="forgot"><a href="#">Forgot Password?</a></p>
+        <p class="validation-errors" *ngIf="isWrongPassword">
+          Wrong email or password
+        </p>
+
+        <button
+          class="button button-block"
+          (click)="login(email.value, password.value)"
+        >
+          Log In
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

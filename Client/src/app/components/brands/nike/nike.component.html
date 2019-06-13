@@ -1,0 +1,31 @@
+<div>
+  <input
+    type="text"
+    id="myInput"
+    #searchInput
+    name="search"
+    (keyup)="filterItem(searchInput.value)"
+    placeholder="  Search...."
+  />
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- single product -->
+    <div class="col-lg-4" *ngFor="let s of allShoes">
+      <div class="product">
+        <div class="shoecard">
+          <img src="../../../../assets/images/nike/{{ s.imgUrl }}" />
+          <h4>{{ s.model }}</h4>
+          <h4>Price: {{ s.price }}$</h4>
+          <div class="sameline">
+            <a class="btn" (click)="addToCart(s.shoesid)">
+              <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+              <p>ADD TO BAG</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

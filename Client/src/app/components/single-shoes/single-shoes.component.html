@@ -1,0 +1,56 @@
+<!--================Single Product Area =================-->
+<div>
+  <div class="container">
+    <div class="row s_product_inner">
+      <div class="col-lg-6">
+        <img
+          class="img-fluid"
+          src="../../../assets/images/nike/{{ singleshoe.imgUrl }}"
+          width="400px"
+          height="300px"
+          alt=""
+        />
+      </div>
+      <div class="col-lg-5 offset-lg-1">
+        <div>
+          <h3>{{ singleshoe.model }}</h3>
+          <h2>${{ singleshoe.price }}</h2>
+          <p>
+            Mill Oil is an innovative oil filled radiator with the most modern
+            technology. If you are looking for something that can make your
+            interior look awesome, and at the same time give you the pleasant
+            warm feeling during the winter.
+          </p>
+          <div class="quantityAndSize">
+            <label for="qty">Quantity:</label>
+            <input
+              type="number"
+              name="qty"
+              #qty
+              maxlength="12"
+              value="1"
+              style="width:40px;margin-right: 10px; "
+            />
+
+            <label for="size">Size:</label>
+            <select style="padding: 4px;" name="size" #size>
+              <option value="38">38</option>
+              <option value="40">40</option>
+              <option value="42">42</option>
+            </select>
+
+            <button
+              class="button button-block"
+              (click)="addToCart(singleshoe.shoesid, size.value, qty.value)"
+            >
+              Add To Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- <div id="buttons"></div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--================End Single Product Area =================-->

@@ -1,0 +1,89 @@
+.button:hover,
+.button:focus {
+  background-color: rgba(0, 0, 0, 0);
+  color: steelblue;
+}
+
+/*----------------------------------------- Moblie Styles-----------------------------------------*/
+@media only screen and (max-width: 600px) {
+  .button {
+    outline: none;
+    padding: 6px 0;
+    background: steelblue;
+    border: 2px solid #a0b3b0;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+  }
+
+  .button-block {
+    border-radius: 30px;
+    padding: 8px 20px;
+    margin: auto;
+    margin-bottom: 3%;
+    margin-top: 5%;
+    display: block;
+  }
+  .quantityAndSize {
+    margin-bottom: 20px;
+    margin-top: 10%;
+  }
+}
+
+/*----------------------------------------- Tablet Styles -----------------------------------------*/
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+  .button {
+    outline: none;
+    padding: 6px 0;
+    background: steelblue;
+    border: 2px solid #a0b3b0;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+  }
+
+  .button-block {
+    border-radius: 30px;
+    padding: 8px 20px;
+    margin: auto;
+    margin-bottom: 3%;
+    display: block;
+  }
+  .quantityAndSize {
+    margin-bottom: 20px;
+    margin-top: 15%;
+  }
+
+  .img-fluid {
+    margin: 2% auto;
+    display: block;
+  }
+}
+
+/*----------------------------------------- Desktop Styles -----------------------------------------*/
+@media only screen and (min-width: 961px) {
+  .button {
+    outline: none;
+    padding: 6px 0;
+    background: steelblue;
+    border: 2px solid #a0b3b0;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+  }
+
+  .button-block {
+    border-radius: 30px;
+    padding: 8px 20px;
+    margin-left: 10%;
+    margin-bottom: 3%;
+  }
+  .quantityAndSize {
+    margin-bottom: 20px;
+    margin-top: 10%;
+  }
+
+  .img-fluid {
+    margin-top: 4%;
+  }
+}
