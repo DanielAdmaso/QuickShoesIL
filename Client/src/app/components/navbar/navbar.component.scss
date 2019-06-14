@@ -13,7 +13,7 @@ a:hover {
     background-image: url("../../../assets/images/banner3.jpg");
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 40%;
+    padding: 31%;
   }
 
   #navbar {
@@ -23,7 +23,7 @@ a:hover {
   }
 
   a {
-    float: left;
+    // float: left;
     line-height: 60px;
     padding: 0 20px;
     transition: all 0.2s;
@@ -33,6 +33,10 @@ a:hover {
 
   .navbar-toggler {
     margin-right: 3%;
+  }
+
+  span {
+    float: none;
   }
 }
 

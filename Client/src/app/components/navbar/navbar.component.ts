@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { LoginService } from "src/app/services/login.service";
 import { Customer } from "src/app/model/CustomerModel";
 import { Router } from "@angular/router";
+declare var jquery: any;
+declare let $: any;
 
 @Component({
   selector: "app-navbar",
@@ -25,6 +27,21 @@ export class NavbarComponent implements OnInit {
         scrollFunction();
       };
     }
+
+    $(".navbar-collapse a").click(function() {
+      $(".navbar-collapse").hide();
+    });
+    $(".navbar-collapse span").click(function() {
+      $(".navbar-collapse").hide();
+    });
+
+    $("button").click(function() {
+      if ($("#navbarNavAltMarkup").css("display") == "none") {
+        $("#navbarNavAltMarkup").css("display", "block");
+      } else {
+        $("#navbarNavAltMarkup").css("display", "none");
+      }
+    });
 
     function scrollFunction() {
       if (
