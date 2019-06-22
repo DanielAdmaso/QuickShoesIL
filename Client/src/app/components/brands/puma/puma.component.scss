@@ -1,0 +1,182 @@
+.btn {
+  cursor: pointer;
+}
+
+/*----------------------------------------- Moblie Styles-----------------------------------------*/
+@media only screen and (max-width: 600px) {
+  .nikeComponent {
+    margin-top: 60px;
+  }
+  #myInput {
+    display: block;
+    margin: auto;
+    background-image: url("../../../../assets/images/icons/search.png");
+    background-size: 25px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 80%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #868f9b;
+    border-radius: 8px;
+    margin-top: -10%;
+    margin-bottom: 20px;
+  }
+
+  #myInput:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt #868f9b;
+  }
+
+  .shoecard {
+    text-align: center;
+    color: #868f9b;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+  p,
+  i {
+    margin-left: 10px;
+    color: steelblue;
+  }
+
+  .sameline p,
+  i {
+    display: inline;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+
+  .product {
+    padding-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 4px;
+    background-color: #fff;
+    width: 80%;
+    margin: 5% auto;
+  }
+}
+
+/*----------------------------------------- Tablet Styles -----------------------------------------*/
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+  #myInput {
+    display: block;
+    margin: auto;
+    background-image: url("../../../../assets/images/icons/search.png");
+    background-size: 25px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 40%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #868f9b;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #myInput:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt #868f9b;
+  }
+
+  .col-lg-4 {
+    width: 50%;
+  }
+  .product {
+    margin: 20px;
+    margin: auto;
+    width: 90%;
+    margin-bottom: 10%;
+    padding-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .shoecard {
+    text-align: center;
+    color: #868f9b;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+  p,
+  i {
+    margin-left: 10px;
+    color: steelblue;
+  }
+
+  .sameline p,
+  i {
+    display: inline;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+}
+
+/*----------------------------------------- Desktop Styles -----------------------------------------*/
+@media only screen and (min-width: 961px) {
+  #myInput {
+    display: block;
+    margin: auto;
+    background-image: url("../../../../assets/images/icons/search.png");
+    background-size: 25px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 30%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #868f9b;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #myInput:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt #868f9b;
+  }
+
+  .shoecard {
+    text-align: center;
+    color: #868f9b;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+  p,
+  i {
+    margin-left: 10px;
+    color: steelblue;
+  }
+
+  .sameline p,
+  i {
+    display: inline;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+
+  .product {
+    margin: 20px;
+    width: 80%;
+    padding-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+}

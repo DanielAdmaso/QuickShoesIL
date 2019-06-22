@@ -3,7 +3,9 @@
   <div class="container">
     <div class="cart_inner">
       <div class="table-responsive">
-        <div *ngIf="!cart"><h1 style="text-align: center;">Your cart is empty</h1></div>
+        <div *ngIf="!cart">
+          <h1 style="text-align: center;">Your cart is empty</h1>
+        </div>
         <div *ngIf="cart">
           <table class="table">
             <thead>
@@ -20,26 +22,28 @@
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="../../../assets/images/nike/{{c.shoes.imgUrl}}" width="200px" height="150px"
-                        alt="not found">
+                      <img
+                        src="../../../assets/images/{{ c.shoes.brand }}/{{
+                          c.shoes.imgUrl
+                        }}"
+                        width="200px"
+                        height="150px"
+                        alt="not found"
+                      />
                     </div>
                     <div class="media-body">
-                      <p>{{c.shoes.model}}</p>
+                      <p>{{ c.shoes.model }}</p>
                     </div>
                   </div>
                 </td>
                 <td>
-                  {{c.size}}
+                  {{ c.size }}
                 </td>
+                <td>${{ c.shoes.price }}</td>
                 <td>
-                  ${{c.shoes.price}}
+                  {{ c.quantity }}
                 </td>
-                <td>
-                  {{c.quantity}}
-                </td>
-                <td>
-                  ${{c.shoes.price * c.quantity}}
-                </td>
+                <td>${{ c.shoes.price * c.quantity }}</td>
               </tr>
               <tr>
                 <td></td>
@@ -49,19 +53,22 @@
                   <h5>Subtotal</h5>
                 </td>
                 <td>
-                  <h5>${{totalPrice}}</h5>
+                  <h5>${{ totalPrice }}</h5>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 <div id="buttons">
-  <button class="button button-block" (click)="buyNow(cart)">Proceed to checkout</button>
-  <button class="button button-block" [routerLink]="['/']">Countinue Shopping</button>
+  <button class="button button-block" (click)="buyNow(cart)">
+    Proceed to checkout
+  </button>
+  <button class="button button-block" [routerLink]="['/']">
+    Countinue Shopping
+  </button>
 </div>
 <!--================End Cart Area =================-->
