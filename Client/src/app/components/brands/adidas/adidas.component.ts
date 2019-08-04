@@ -15,7 +15,6 @@ declare var $: any;
 })
 export class AdidasComponent implements OnInit {
   constructor(private shoesService: ShoesService, private router: Router) {}
-  // searchShoes:Shoes[]
   allShoes: Shoes[];
   adidasShoes: Shoes[];
   ngOnInit() {
@@ -28,19 +27,6 @@ export class AdidasComponent implements OnInit {
         this.getAdidasShoes(allShoes);
       });
     }
-
-    $("#inpt_search").on("focus", function() {
-      $(this)
-        .parent("label")
-        .addClass("active");
-    });
-
-    $("#inpt_search").on("blur", function() {
-      if ($(this).val().length == 0)
-        $(this)
-          .parent("label")
-          .removeClass("active");
-    });
   }
 
   getAdidasShoes(allShoes) {
